@@ -1,0 +1,10 @@
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/CSharpClient.deps.json
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/CSharpClient.runtimeconfig.json
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/CSharpClient.runtimeconfig.dev.json
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/CSharpClient.dll
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/CSharpClient.pdb
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.csprojAssemblyReference.cache
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.csproj.CoreCompileInputs.cache
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.dll
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.pdb
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.genruntimeconfig.cache
