@@ -2,34 +2,91 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Net.Sockets.Kcp;
-using System.Collections.Generic;
-using System.Collections;
 
-
-
-using System.Buffers;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Runtime.InteropServices;
 
 namespace CSharpTest
 {
     public class UdpSocket
     {
         private Socket socket;
+        private Kcp mKcp;
+        private KcpHandler mHandler;
+        // EndPoint ep = new IPEndPoint(Dns.GetHostEntry("dztest.runfagame.cn").AddressList[0], 26379);
+        EndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8880);
 
         public void Connect()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            socket.Bind(new IPEndPoint(IPAddress.Any, 11000));
+
+            mHandler = new KcpHandler();
+            mKcp = new Kcp(10, mHandler);
+            mKcp.NoDelay(1, 10, 2, 1);
+            mKcp.WndSize(64, 64);
+            mKcp.SetMtu(512);
+
+            mHandler.Out += buffer =>
+            {
+                Console.WriteLine("mHandler Out");
+                socket.SendTo(buffer.ToArray(), ep);
+            };
+
+            mHandler.Recv += buffer =>
+            {
+                string str = Encoding.ASCII.GetString(buffer);
+                Console.WriteLine("mHandler Recv {0}", str);
+            };
+
+            Task.Run(async () =>
+            {
+                try
+                {
+                    while (true)
+                    {
+                        mKcp.Update(DateTime.UtcNow);
+                        int len;
+                        //方法1
+                        while ((len = mKcp.PeekSize()) > 0)
+                        {
+                            byte[] buffer = new byte[len];
+                            if (mKcp.Recv(buffer) >= 0)
+                            {
+                                Console.WriteLine("mHandler Receive");
+                                mHandler.Receive(buffer);
+                            }
+                        }
+                        //方法2
+                        // do
+                        // {
+                        //     var (buffer, avalidSize) = mKcp.TryRecv();
+                        //     len = avalidSize;
+                        //     if (buffer != null)
+                        //     {
+                        //         var temp = new byte[len];
+                        //         buffer.Memory.Span.Slice(0, len).CopyTo(temp);
+                        //         Console.WriteLine("mKcp Receive");
+                        //         mHandler.Receive(temp);
+                        //     }
+                        // } while (len > 0);
+
+                        await Task.Delay(5);
+                    }
+                }
+                catch (Exception e)
+                {
+                    e.ToString();
+                }
+            });
 
             Thread threadReceive = new Thread(Receive);
             threadReceive.IsBackground = true;
             threadReceive.Start();
 
-            EndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8881);
-            byte[] buffer = Encoding.ASCII.GetBytes("hello tan da shen");
-            socket.SendTo(buffer, ep);
+            var sendbyte = Encoding.ASCII.GetBytes("hello tan da shen");
+            mKcp.Send(sendbyte);
         }
 
         private void Receive()
@@ -37,10 +94,14 @@ namespace CSharpTest
             EndPoint ep = new IPEndPoint(IPAddress.Any, 0);
             try
             {
-                byte[] buffer = new byte[1024];
-                int buflen = socket.ReceiveFrom(buffer, ref ep);
-                string recvMsg = Encoding.ASCII.GetString(buffer, 0, buflen);
-                Console.WriteLine("收到UDP消息{0}", recvMsg);
+                byte[] data = new byte[1024];
+                int buflen = socket.ReceiveFrom(data, ref ep);
+                string recvMsg = Encoding.ASCII.GetString(data, 0, buflen);
+                Console.WriteLine("收到UDP消息{0} IP{1} port{2}", recvMsg, (ep as IPEndPoint).Address, (ep as IPEndPoint).Port);
+                Console.WriteLine("mKcp Input");
+
+                Span<byte> buffer = data;
+                mKcp.Input(buffer);
 
                 Receive();
             }
