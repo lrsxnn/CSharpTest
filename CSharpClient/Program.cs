@@ -1,36 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
-using System.Net.Sockets;
-
-namespace CSharpTest
+using CSharpClient.Net;
+using CSharpClient.Net.Cmd;
+namespace CSharpClient
 {
     class Program
     {
         static void Main(string[] args)
         {
-            // IPHostEntry hostEntry = Dns.GetHostEntry("dztest.runfagame.cn");
-            // IPEndPoint ipEndPoint = new IPEndPoint(hostEntry.AddressList[0], 0);
-
-            // Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
-            // try
-            // {
-            //     socket.Connect(ipEndPoint.Address.ToString(), 26379);
-            // }
-            // catch (SocketException e)
-            // {
-            //     Console.WriteLine(e.ToString());
-            //     return;
-            // }
-
-            // Console.WriteLine("connect success");
-            // socket.Close();
+            // EndPoint ep = new IPEndPoint(Dns.GetHostEntry("dztest.runfagame.cn").AddressList[0], 55561);
+            // EndPoint ep = new IPEndPoint(IPAddress.Parse("127.0.0.1"), 8880);
 
             var socket = new UdpSocket();
-            // socket.TestKCP();
-            socket.Connect();
+            socket.ConnectServer("127.0.0.1", 8880);
+
+            var enterRoom = SendProto.CliEnterRoom(1, "坦克大战");
+            socket.Send(SendProto.Serialize(enterRoom));
             Console.ReadKey();
         }
     }

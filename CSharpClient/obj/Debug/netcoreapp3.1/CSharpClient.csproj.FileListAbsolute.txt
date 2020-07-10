@@ -8,3 +8,5 @@
 /Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.dll
 /Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.pdb
 /Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.genruntimeconfig.cache
+/Users/yons/workspace/CSharpTest/CSharpClient/bin/Debug/netcoreapp3.1/Google.Protobuf.dll
+/Users/yons/workspace/CSharpTest/CSharpClient/obj/Debug/netcoreapp3.1/CSharpClient.csproj.CopyComplete

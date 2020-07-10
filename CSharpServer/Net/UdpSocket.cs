@@ -7,7 +7,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSharpServer
+using CSharpServer.Net.func;
+
+namespace CSharpServer.Net
 {
     public class UdpSocket
     {
@@ -15,6 +17,8 @@ namespace CSharpServer
         private Kcp mKcp;
         private KcpHandler mHandler;
         private EndPoint ep = new IPEndPoint(IPAddress.Any, 0);
+        private ReceiveProto proto;
+
         public void Connect()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
@@ -28,6 +32,8 @@ namespace CSharpServer
             mKcp.WndSize(64, 64);
             mKcp.SetMtu(512);
 
+            proto = new ReceiveProto();
+
             mHandler.Out += buffer =>
             {
                 Console.WriteLine("mHandler Out IP{0} port{1}", (ep as IPEndPoint).Address, (ep as IPEndPoint).Port);
@@ -36,10 +42,7 @@ namespace CSharpServer
 
             mHandler.Recv += buffer =>
             {
-                string str = Encoding.ASCII.GetString(buffer);
-                Console.WriteLine("mHandler Recv {0}", str);
-
-                // mKcp.Send(buffer);
+                proto.Decode(buffer);
             };
 
             Task.Run(async () =>
@@ -94,9 +97,7 @@ namespace CSharpServer
             {
                 byte[] data = new byte[1024];
                 int buflen = socket.ReceiveFrom(data, ref ep);
-                string recvMsg = Encoding.ASCII.GetString(data, 0, buflen);
-                Console.WriteLine("收到UDP消息{0} IP{1} port{2}", recvMsg, (ep as IPEndPoint).Address, (ep as IPEndPoint).Port);
-
+                Console.WriteLine("收到UDP消息长度{0} IP{1} port{2}", buflen, (ep as IPEndPoint).Address, (ep as IPEndPoint).Port);
                 Console.WriteLine("mKcp Input");
 
                 Span<byte> buffer = data;
@@ -108,6 +109,11 @@ namespace CSharpServer
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public void Send(byte[] buffer)
+        {
+            mKcp.Send(buffer);
         }
     }
 }

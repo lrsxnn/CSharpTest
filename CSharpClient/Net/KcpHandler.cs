@@ -2,7 +2,7 @@ using System;
 using System.Buffers;
 using System.Net.Sockets.Kcp;
 
-namespace CSharpServer
+namespace CSharpClient.Net
 {
     public class KcpHandler : IKcpCallback
     {

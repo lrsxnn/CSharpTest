@@ -1,8 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "UBVwqoeM3buvXmSrE784g+IxlGoJAT/cvuYz7z/TdTBE/Ob3tBLe9VY6rWhXUl7ogBIZ0ZRhasuVTsRIex7hCw==",
+  "dgSpecHash": "gzVzajchVTpZrbAjIVhlIduKAxZDD+AUtQTZ1F/XXh2ZbEZ+BUxEu1lHYSSO0EzeDjK4mqC/5kVfWpvbN8iVHg==",
   "success": true,
   "projectFilePath": "/Users/yons/workspace/CSharpTest/CSharpClient/CSharpClient.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "/Users/yons/.nuget/packages/google.protobuf/3.12.3/google.protobuf.3.12.3.nupkg.sha512",
+    "/Users/yons/.nuget/packages/system.memory/4.5.2/system.memory.4.5.2.nupkg.sha512"
+  ],
   "logs": []
 }
