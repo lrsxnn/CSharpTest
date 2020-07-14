@@ -45,27 +45,27 @@ namespace Lspb {
   #region Enums
   public enum SrvMsgType {
     /// <summary>
-    ///* default 
+    /// * default 
     /// </summary>
     [pbr::OriginalName("errorClientType")] ErrorClientType = 0,
     /// <summary>
-    ///* 进入游戏 
+    /// * 进入游戏 
     /// </summary>
     [pbr::OriginalName("srvEnterRoom")] SrvEnterRoom = 101,
     /// <summary>
-    ///* 初始化完成ACK 
+    /// * 初始化完成ACK 
     /// </summary>
     [pbr::OriginalName("srvInitOver")] SrvInitOver = 102,
     /// <summary>
-    ///* 房间初始化 
+    /// * 房间初始化 
     /// </summary>
     [pbr::OriginalName("bGameInit")] BGameInit = 1001,
     /// <summary>
-    ///* 游戏正式开始推送 
+    /// * 游戏正式开始推送 
     /// </summary>
     [pbr::OriginalName("bGameStart")] BGameStart = 1002,
     /// <summary>
-    ///* 游戏逻辑帧操作 
+    /// * 游戏逻辑帧操作 
     /// </summary>
     [pbr::OriginalName("bGameFrame")] BGameFrame = 1003,
   }
@@ -74,7 +74,7 @@ namespace Lspb {
 
   #region Messages
   /// <summary>
-  ///* 所有下行请求都是serverResponse，服务器会传递具体内容的标示methodId，客户端根据methodId进行处理 
+  /// * 所有下行请求都是serverResponse，服务器会传递具体内容的标示methodId，客户端根据methodId进行处理 
   /// </summary>
   public sealed partial class SrvRes : pb::IMessage<SrvRes> {
     private static readonly pb::MessageParser<SrvRes> _parser = new pb::MessageParser<SrvRes>(() => new SrvRes());
@@ -119,7 +119,7 @@ namespace Lspb {
     public const int MethodIdFieldNumber = 1;
     private global::Lspb.SrvMsgType methodId_ = 0;
     /// <summary>
-    ///* 返回方法名 
+    /// * 返回方法名 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.SrvMsgType MethodId {
@@ -133,7 +133,7 @@ namespace Lspb {
     public const int ResultFieldNumber = 2;
     private global::Lspb.Result result_ = 0;
     /// <summary>
-    ///* 返回码，包含success和错误码 
+    /// * 返回码，包含success和错误码 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.Result Result {
@@ -147,7 +147,7 @@ namespace Lspb {
     public const int ErrStrFieldNumber = 3;
     private string errStr_ = "";
     /// <summary>
-    ///* 错误展示字段，如果result不为0，则取该字段给用户展示 
+    /// * 错误展示字段，如果result不为0，则取该字段给用户展示 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string ErrStr {
@@ -161,7 +161,7 @@ namespace Lspb {
     public const int SrvEnterRoomFieldNumber = 101;
     private global::Lspb.SrvEnterRoom srvEnterRoom_;
     /// <summary>
-    ///* 玩家进入房间 
+    /// * 玩家进入房间 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.SrvEnterRoom SrvEnterRoom {
@@ -175,7 +175,7 @@ namespace Lspb {
     public const int SrvInitOverFieldNumber = 102;
     private global::Lspb.SrvInitOver srvInitOver_;
     /// <summary>
-    ///* 初始化完成ACK 
+    /// * 初始化完成ACK 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.SrvInitOver SrvInitOver {
@@ -189,7 +189,7 @@ namespace Lspb {
     public const int BGameInitFieldNumber = 1001;
     private global::Lspb.BGameInit bGameInit_;
     /// <summary>
-    ///* 游戏初始化信息 
+    /// * 游戏初始化信息 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.BGameInit BGameInit {
@@ -203,7 +203,7 @@ namespace Lspb {
     public const int BGameStartFieldNumber = 1002;
     private global::Lspb.BGameStart bGameStart_;
     /// <summary>
-    ///* 游戏正式开始推送 
+    /// * 游戏正式开始推送 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.BGameStart BGameStart {
@@ -217,7 +217,7 @@ namespace Lspb {
     public const int BGameFrameFieldNumber = 1003;
     private global::Lspb.BGameFrame bGameFrame_;
     /// <summary>
-    ///* 游戏逻辑帧操作 
+    /// * 游戏逻辑帧操作 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.BGameFrame BGameFrame {

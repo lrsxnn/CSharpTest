@@ -43,19 +43,19 @@ namespace Lspb {
   #region Enums
   public enum ClientMsgType {
     /// <summary>
-    ///* default 
+    /// * default 
     /// </summary>
     [pbr::OriginalName("errorClientType")] ErrorClientType = 0,
     /// <summary>
-    ///* 进入游戏 
+    /// * 进入游戏 
     /// </summary>
     [pbr::OriginalName("cliEnterRoom")] CliEnterRoom = 101,
     /// <summary>
-    ///* 通知服务器初始化完成 
+    /// * 通知服务器初始化完成 
     /// </summary>
     [pbr::OriginalName("cliInitOver")] CliInitOver = 102,
     /// <summary>
-    ///* 客户端对坦克的具体操作 
+    /// * 客户端对坦克的具体操作 
     /// </summary>
     [pbr::OriginalName("cliOperate")] CliOperate = 103,
   }
@@ -64,7 +64,7 @@ namespace Lspb {
 
   #region Messages
   /// <summary>
-  ///* 所有上行请求都是clientRequest，服务器根据methodId读取具体的message内容,当 
+  /// * 所有上行请求都是clientRequest，服务器根据methodId读取具体的message内容,当 
   /// </summary>
   public sealed partial class CliReq : pb::IMessage<CliReq> {
     private static readonly pb::MessageParser<CliReq> _parser = new pb::MessageParser<CliReq>(() => new CliReq());
@@ -107,7 +107,7 @@ namespace Lspb {
     public const int UserIdFieldNumber = 1;
     private int userId_;
     /// <summary>
-    ///* 用户名 
+    /// * 用户名 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int UserId {
@@ -121,7 +121,7 @@ namespace Lspb {
     public const int ModuleIdFieldNumber = 2;
     private global::Lspb.ModuleId moduleId_ = 0;
     /// <summary>
-    ///* 请求模块 
+    /// * 请求模块 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.ModuleId ModuleId {
@@ -135,7 +135,7 @@ namespace Lspb {
     public const int MethodIdFieldNumber = 3;
     private global::Lspb.ClientMsgType methodId_ = 0;
     /// <summary>
-    ///* 请求方法名 
+    /// * 请求方法名 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.ClientMsgType MethodId {
@@ -149,7 +149,7 @@ namespace Lspb {
     public const int CliEnterRoomFieldNumber = 101;
     private global::Lspb.CliEnterRoom cliEnterRoom_;
     /// <summary>
-    ///* 进入房间 
+    /// * 进入房间 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.CliEnterRoom CliEnterRoom {
@@ -163,7 +163,7 @@ namespace Lspb {
     public const int CliInitOverFieldNumber = 102;
     private global::Lspb.CliInitOver cliInitOver_;
     /// <summary>
-    ///* 客户端初始化完成 
+    /// * 客户端初始化完成 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.CliInitOver CliInitOver {
@@ -177,7 +177,7 @@ namespace Lspb {
     public const int CliOperateFieldNumber = 103;
     private global::Lspb.CliOperate cliOperate_;
     /// <summary>
-    ///* 客户端对坦克的具体操作 
+    /// * 客户端对坦克的具体操作 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public global::Lspb.CliOperate CliOperate {

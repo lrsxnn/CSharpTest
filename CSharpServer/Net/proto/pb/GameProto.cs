@@ -30,7 +30,7 @@ namespace Lspb {
             "IAEoBSINCgtDbGlJbml0T3ZlciINCgtTcnZJbml0T3ZlciIMCgpCR2FtZVN0",
             "YXJ0Ij0KCkJHYW1lRnJhbWUSCwoDZklkGAEgASgFEiIKCG9wZXJMaXN0GAIg",
             "AygLMhAubHNwYi5DbGlPcGVyYXRlIkEKCkNsaU9wZXJhdGUSEQoJZGlyZWN0",
-            "aW9uGAEgASgCEg4KBmlzRmlyZRgCIAEoCBIQCghwbGF5ZXJJZBgDIAEoBUIS",
+            "aW9uGAEgASgJEg4KBmlzRmlyZRgCIAEoCBIQCghwbGF5ZXJJZBgDIAEoBUIS",
             "ChBvcmcuYnJvLmxzc3J2LnBiYgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
@@ -51,7 +51,7 @@ namespace Lspb {
   }
   #region Messages
   /// <summary>
-  ///* 进入房间 
+  /// * 进入房间 
   /// </summary>
   public sealed partial class CliEnterRoom : pb::IMessage<CliEnterRoom> {
     private static readonly pb::MessageParser<CliEnterRoom> _parser = new pb::MessageParser<CliEnterRoom>(() => new CliEnterRoom());
@@ -90,7 +90,7 @@ namespace Lspb {
     public const int RoomIdFieldNumber = 1;
     private int roomId_;
     /// <summary>
-    ///* 房间号 
+    /// * 房间号 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int RoomId {
@@ -104,7 +104,7 @@ namespace Lspb {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    ///* 昵称 
+    /// * 昵称 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -240,7 +240,7 @@ namespace Lspb {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    ///* 服务器本次分配的id号,链接断开之前不会改变
+    /// * 服务器本次分配的id号,链接断开之前不会改变
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PlayerId {
@@ -325,7 +325,7 @@ namespace Lspb {
   }
 
   /// <summary>
-  ///* 推送初始化信息 
+  /// * 推送初始化信息 
   /// </summary>
   public sealed partial class BGameInit : pb::IMessage<BGameInit> {
     private static readonly pb::MessageParser<BGameInit> _parser = new pb::MessageParser<BGameInit>(() => new BGameInit());
@@ -364,7 +364,7 @@ namespace Lspb {
     public const int SeedFieldNumber = 1;
     private int seed_;
     /// <summary>
-    ///* 本次随机数种子 
+    /// * 本次随机数种子 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int Seed {
@@ -380,7 +380,7 @@ namespace Lspb {
         = pb::FieldCodec.ForMessage(18, global::Lspb.PlayerInfo.Parser);
     private readonly pbc::RepeatedField<global::Lspb.PlayerInfo> pList_ = new pbc::RepeatedField<global::Lspb.PlayerInfo>();
     /// <summary>
-    ///* 每个玩家的信息列表 
+    /// * 每个玩家的信息列表 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Lspb.PlayerInfo> PList {
@@ -508,7 +508,7 @@ namespace Lspb {
     public const int PlayerIdFieldNumber = 1;
     private int playerId_;
     /// <summary>
-    ///* id 
+    /// * id 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PlayerId {
@@ -522,7 +522,7 @@ namespace Lspb {
     public const int NameFieldNumber = 2;
     private string name_ = "";
     /// <summary>
-    ///* 昵称 
+    /// * 昵称 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public string Name {
@@ -536,7 +536,7 @@ namespace Lspb {
     public const int StartPointFieldNumber = 3;
     private int startPoint_;
     /// <summary>
-    ///* 出生点编号 
+    /// * 出生点编号 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int StartPoint {
@@ -653,7 +653,7 @@ namespace Lspb {
   }
 
   /// <summary>
-  ///* 通知服务器初始化完成 
+  /// * 通知服务器初始化完成 
   /// </summary>
   public sealed partial class CliInitOver : pb::IMessage<CliInitOver> {
     private static readonly pb::MessageParser<CliInitOver> _parser = new pb::MessageParser<CliInitOver>(() => new CliInitOver());
@@ -834,7 +834,7 @@ namespace Lspb {
   }
 
   /// <summary>
-  ///* 所有客户端初始化完毕后，服务器推送正式开始消息 
+  /// * 所有客户端初始化完毕后，服务器推送正式开始消息 
   /// </summary>
   public sealed partial class BGameStart : pb::IMessage<BGameStart> {
     private static readonly pb::MessageParser<BGameStart> _parser = new pb::MessageParser<BGameStart>(() => new BGameStart());
@@ -926,7 +926,7 @@ namespace Lspb {
   }
 
   /// <summary>
-  ///* 游戏逻辑帧推送 
+  /// * 游戏逻辑帧推送 
   /// </summary>
   public sealed partial class BGameFrame : pb::IMessage<BGameFrame> {
     private static readonly pb::MessageParser<BGameFrame> _parser = new pb::MessageParser<BGameFrame>(() => new BGameFrame());
@@ -965,7 +965,7 @@ namespace Lspb {
     public const int FIdFieldNumber = 1;
     private int fId_;
     /// <summary>
-    ///* frameId 
+    /// * frameId 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int FId {
@@ -981,7 +981,7 @@ namespace Lspb {
         = pb::FieldCodec.ForMessage(18, global::Lspb.CliOperate.Parser);
     private readonly pbc::RepeatedField<global::Lspb.CliOperate> operList_ = new pbc::RepeatedField<global::Lspb.CliOperate>();
     /// <summary>
-    ///* 每个玩家的具体操作 
+    /// * 每个玩家的具体操作 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public pbc::RepeatedField<global::Lspb.CliOperate> OperList {
@@ -1072,7 +1072,7 @@ namespace Lspb {
   }
 
   /// <summary>
-  ///* 客户端操作 
+  /// * 客户端操作 
   /// </summary>
   public sealed partial class CliOperate : pb::IMessage<CliOperate> {
     private static readonly pb::MessageParser<CliOperate> _parser = new pb::MessageParser<CliOperate>(() => new CliOperate());
@@ -1110,15 +1110,15 @@ namespace Lspb {
 
     /// <summary>Field number for the "direction" field.</summary>
     public const int DirectionFieldNumber = 1;
-    private float direction_;
+    private string direction_ = "";
     /// <summary>
-    ///* 方向,保存3位小数 
+    /// * 方向,保存3位小数 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    public float Direction {
+    public string Direction {
       get { return direction_; }
       set {
-        direction_ = value;
+        direction_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -1126,7 +1126,7 @@ namespace Lspb {
     public const int IsFireFieldNumber = 2;
     private bool isFire_;
     /// <summary>
-    ///* 是否开炮 
+    /// * 是否开炮 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public bool IsFire {
@@ -1140,7 +1140,7 @@ namespace Lspb {
     public const int PlayerIdFieldNumber = 3;
     private int playerId_;
     /// <summary>
-    ///* player id,客户端不传，服务器推送前写入 
+    /// * player id,客户端不传，服务器推送前写入 
     /// </summary>
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int PlayerId {
@@ -1172,7 +1172,7 @@ namespace Lspb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public override int GetHashCode() {
       int hash = 1;
-      if (Direction != 0F) hash ^= Direction.GetHashCode();
+      if (Direction.Length != 0) hash ^= Direction.GetHashCode();
       if (IsFire != false) hash ^= IsFire.GetHashCode();
       if (PlayerId != 0) hash ^= PlayerId.GetHashCode();
       return hash;
@@ -1185,9 +1185,9 @@ namespace Lspb {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public void WriteTo(pb::CodedOutputStream output) {
-      if (Direction != 0F) {
-        output.WriteRawTag(13);
-        output.WriteFloat(Direction);
+      if (Direction.Length != 0) {
+        output.WriteRawTag(10);
+        output.WriteString(Direction);
       }
       if (IsFire != false) {
         output.WriteRawTag(16);
@@ -1202,8 +1202,8 @@ namespace Lspb {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     public int CalculateSize() {
       int size = 0;
-      if (Direction != 0F) {
-        size += 1 + 4;
+      if (Direction.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Direction);
       }
       if (IsFire != false) {
         size += 1 + 1;
@@ -1219,7 +1219,7 @@ namespace Lspb {
       if (other == null) {
         return;
       }
-      if (other.Direction != 0F) {
+      if (other.Direction.Length != 0) {
         Direction = other.Direction;
       }
       if (other.IsFire != false) {
@@ -1238,8 +1238,8 @@ namespace Lspb {
           default:
             input.SkipLastField();
             break;
-          case 13: {
-            Direction = input.ReadFloat();
+          case 10: {
+            Direction = input.ReadString();
             break;
           }
           case 16: {

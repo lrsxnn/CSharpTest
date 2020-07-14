@@ -1,3 +1,4 @@
+
 using Google.Protobuf;
 using Lspb;
 using System;
@@ -42,23 +43,28 @@ namespace CSharpClient.Net.Cmd
 
         public virtual void SrvEnterRoom(SrvEnterRoom msg, Result result, string errStr)
         {
-            Console.WriteLine("SrvEnterRoom no instantiation");
+            Console.WriteLine("-----------------------no implements SrvEnterRoom-----------------------");
         }
+
         public virtual void SrvInitOver(SrvInitOver msg, Result result, string errStr)
         {
-            Console.WriteLine("SrvInitOver no instantiation");
+            Console.WriteLine("-----------------------no implements SrvInitOver-----------------------");
         }
+
         public virtual void BGameInit(BGameInit msg, Result result, string errStr)
         {
-            Console.WriteLine("BGameInit no instantiation");
+            Console.WriteLine("-----------------------no implements BGameInit-----------------------");
         }
+
         public virtual void BGameStart(BGameStart msg, Result result, string errStr)
         {
-            Console.WriteLine("BGameStart no instantiation");
+            Console.WriteLine("-----------------------no implements BGameStart-----------------------");
         }
+
         public virtual void BGameFrame(BGameFrame msg, Result result, string errStr)
         {
-            Console.WriteLine("BGameFrame no instantiation");
+            Console.WriteLine("-----------------------no implements BGameFrame-----------------------");
         }
+
     }
 }

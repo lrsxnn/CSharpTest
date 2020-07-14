@@ -36,30 +36,30 @@ namespace Lspb {
   #region Enums
   public enum ModuleId {
     /// <summary>
-    ///* default 
+    /// * default 
     /// </summary>
     [pbr::OriginalName("UnknownModel")] UnknownModel = 0,
     /// <summary>
-    ///* game 
+    /// * game 
     /// </summary>
     [pbr::OriginalName("Game")] Game = 1,
   }
 
   public enum Result {
     /// <summary>
-    ///* 成功 
+    /// * 成功 
     /// </summary>
     [pbr::OriginalName("success")] Success = 0,
     /// <summary>
-    ///* 任意失败 
+    /// * 任意失败 
     /// </summary>
     [pbr::OriginalName("err")] Err = 1,
     /// <summary>
-    ///* 没有该方法错误 
+    /// * 没有该方法错误 
     /// </summary>
     [pbr::OriginalName("errNoMethod")] ErrNoMethod = 2,
     /// <summary>
-    ///* 消息为空 
+    /// * 消息为空 
     /// </summary>
     [pbr::OriginalName("errNulMsg")] ErrNulMsg = 3,
   }
