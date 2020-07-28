@@ -13,13 +13,14 @@ namespace CSharpClient.Net
 {
     public class UdpSocket
     {
-        private Socket socket;
-        private Kcp mKcp;
-        private KcpHandler mHandler;
-        private ReceiveProto proto;
+        private static Socket socket;
+        private static Kcp mKcp;
+        private static KcpHandler mHandler;
+        private static ReceiveProto proto;
+        private static EndPoint ep;
 
 
-        public void ConnectServer(string address, int port)
+        public static void ConnectServer(string address, int port)
         {
             Regex regex = new Regex(@"^((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})(\.((2(5[0-5]|[0-4]\d))|[0-1]?\d{1,2})){3}$");//判断是否为IP地址
             if (regex.IsMatch(address))
@@ -32,7 +33,7 @@ namespace CSharpClient.Net
             }
         }
 
-        private void ConnectByIP(string ip, int port)
+        private static void ConnectByIP(string ip, int port)
         {
             try
             {
@@ -46,7 +47,7 @@ namespace CSharpClient.Net
             }
         }
 
-        private void ConnectByHost(string host, int port)
+        private static void ConnectByHost(string host, int port)
         {
             IPHostEntry iphe = null;
             try
@@ -61,12 +62,12 @@ namespace CSharpClient.Net
             }
         }
 
-        private void Connect(IPEndPoint ipep)
+        private static void Connect(IPEndPoint ipep)
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             socket.Bind(new IPEndPoint(IPAddress.Any, 11000));
 
-            EndPoint ep = ipep;
+            EndPoint serverEP = ipep;
 
             mHandler = new KcpHandler();
             mKcp = new Kcp(10, mHandler);
@@ -81,7 +82,7 @@ namespace CSharpClient.Net
                 Console.WriteLine("mHandler Out");
                 try
                 {
-                    socket.SendTo(buffer.ToArray(), ep);
+                    socket.SendTo(buffer.ToArray(), serverEP);
                 }
                 catch (SocketException e)
                 {
@@ -91,7 +92,7 @@ namespace CSharpClient.Net
 
             mHandler.Recv += buffer =>
             {
-                proto.Decode(buffer);
+                proto.Receive(buffer);
             };
 
             Task.Run(async () =>
@@ -135,14 +136,15 @@ namespace CSharpClient.Net
                 }
             });
 
+            ep = new IPEndPoint(IPAddress.Any, 0);
+
             Thread threadReceive = new Thread(Receive);
             threadReceive.IsBackground = true;
             threadReceive.Start();
         }
 
-        private void Receive()
+        private static void Receive()
         {
-            EndPoint ep = new IPEndPoint(IPAddress.Any, 0);
             try
             {
                 byte[] data = new byte[1024];
@@ -160,7 +162,7 @@ namespace CSharpClient.Net
             }
         }
 
-        public void Send(byte[] buffer)
+        public static void Send(byte[] buffer)
         {
             mKcp.Send(buffer);
         }

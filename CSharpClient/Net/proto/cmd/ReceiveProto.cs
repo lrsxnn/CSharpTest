@@ -15,7 +15,7 @@ namespace CSharpClient.Net.Cmd
             return message as T;
         }
 
-        public void Decode(byte[] buffer)
+        public void Receive(byte[] buffer)
         {
             SrvRes res = Deserialize<SrvRes>(buffer);
             switch (res.MethodId)
@@ -41,27 +41,27 @@ namespace CSharpClient.Net.Cmd
             }
         }
 
-        public virtual void SrvEnterRoom(SrvEnterRoom msg, Result result, string errStr)
+        protected virtual void SrvEnterRoom(SrvEnterRoom msg, Result result, string errStr)
         {
             Console.WriteLine("-----------------------no implements SrvEnterRoom-----------------------");
         }
 
-        public virtual void SrvInitOver(SrvInitOver msg, Result result, string errStr)
+        protected virtual void SrvInitOver(SrvInitOver msg, Result result, string errStr)
         {
             Console.WriteLine("-----------------------no implements SrvInitOver-----------------------");
         }
 
-        public virtual void BGameInit(BGameInit msg, Result result, string errStr)
+        protected virtual void BGameInit(BGameInit msg, Result result, string errStr)
         {
             Console.WriteLine("-----------------------no implements BGameInit-----------------------");
         }
 
-        public virtual void BGameStart(BGameStart msg, Result result, string errStr)
+        protected virtual void BGameStart(BGameStart msg, Result result, string errStr)
         {
             Console.WriteLine("-----------------------no implements BGameStart-----------------------");
         }
 
-        public virtual void BGameFrame(BGameFrame msg, Result result, string errStr)
+        protected virtual void BGameFrame(BGameFrame msg, Result result, string errStr)
         {
             Console.WriteLine("-----------------------no implements BGameFrame-----------------------");
         }

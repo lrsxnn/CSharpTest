@@ -7,7 +7,7 @@ namespace CSharpClient.Net.Cmd
 {
     public class SendProto
     {
-        public static byte[] Serialize<T>(T obj) where T : IMessage
+        private static byte[] Serialize<T>(T obj) where T : IMessage
         {
             return obj.ToByteArray();
         }
@@ -22,7 +22,7 @@ namespace CSharpClient.Net.Cmd
             };
         }
 
-        public static CliReq CliEnterRoom(int roomId = 0, string name = "", int userId = 1, ModuleId moduleId = ModuleId.Game)
+        public static void CliEnterRoom(int roomId = 0, string name = "", int userId = 1, ModuleId moduleId = ModuleId.Game)
         {
             CliEnterRoom cliEnterRoom = new CliEnterRoom();
             cliEnterRoom.RoomId = roomId;
@@ -30,10 +30,11 @@ namespace CSharpClient.Net.Cmd
 
             CliReq req = CreateCliReq(ClientMsgType.CliEnterRoom, userId, moduleId);
             req.CliEnterRoom = cliEnterRoom;
-            return req;
+
+            UdpSocket.Send(Serialize(req));
         }
 
-        public static CliReq CliOperate(string direction = "", bool isFire = false, int playerId = 0, int userId = 1, ModuleId moduleId = ModuleId.Game)
+        public static void CliOperate(string direction = "", bool isFire = false, int playerId = 0, int userId = 1, ModuleId moduleId = ModuleId.Game)
         {
             CliOperate cliOperate = new CliOperate();
             cliOperate.Direction = direction;
@@ -42,16 +43,18 @@ namespace CSharpClient.Net.Cmd
 
             CliReq req = CreateCliReq(ClientMsgType.CliOperate, userId, moduleId);
             req.CliOperate = cliOperate;
-            return req;
+
+            UdpSocket.Send(Serialize(req));
         }
 
-        public static CliReq CliInitOver(int userId = 1, ModuleId moduleId = ModuleId.Game)
+        public static void CliInitOver(int userId = 1, ModuleId moduleId = ModuleId.Game)
         {
             CliInitOver cliInitOver = new CliInitOver();
 
             CliReq req = CreateCliReq(ClientMsgType.CliInitOver, userId, moduleId);
             req.CliInitOver = cliInitOver;
-            return req;
+
+            UdpSocket.Send(Serialize(req));
         }
 
     }

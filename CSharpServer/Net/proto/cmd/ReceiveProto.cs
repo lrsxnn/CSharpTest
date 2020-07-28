@@ -15,7 +15,7 @@ namespace CSharpServer.Net.Cmd
             return message as T;
         }
 
-        public void Decode(byte[] buffer)
+        public void Receive(byte[] buffer)
         {
             CliReq req = Deserialize<CliReq>(buffer);
             switch (req.MethodId)
@@ -35,17 +35,17 @@ namespace CSharpServer.Net.Cmd
             }
         }
 
-        public virtual void CliEnterRoom(CliEnterRoom msg)
+        protected virtual void CliEnterRoom(CliEnterRoom msg)
         {
             Console.WriteLine("-----------------------no implements CliEnterRoom-----------------------");
         }
 
-        public virtual void CliInitOver(CliInitOver msg)
+        protected virtual void CliInitOver(CliInitOver msg)
         {
             Console.WriteLine("-----------------------no implements CliInitOver-----------------------");
         }
 
-        public virtual void CliOperate(CliOperate msg)
+        protected virtual void CliOperate(CliOperate msg)
         {
             Console.WriteLine("-----------------------no implements CliOperate-----------------------");
         }

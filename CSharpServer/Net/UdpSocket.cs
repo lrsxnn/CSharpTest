@@ -13,13 +13,14 @@ namespace CSharpServer.Net
 {
     public class UdpSocket
     {
-        private Socket socket;
-        private Kcp mKcp;
-        private KcpHandler mHandler;
-        private EndPoint ep = new IPEndPoint(IPAddress.Any, 0);
-        private ReceiveProto proto;
-
-        public void Connect()
+        private static Socket socket;
+        private static Kcp mKcp;
+        private static KcpHandler mHandler;
+        private static EndPoint ep;
+        private static ReceiveProto proto;
+        private static byte[] data;
+        private static int buflen;
+        public static void Connect()
         {
             socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
             socket.Bind(new IPEndPoint(IPAddress.Any, 8880));
@@ -42,7 +43,7 @@ namespace CSharpServer.Net
 
             mHandler.Recv += buffer =>
             {
-                proto.Decode(buffer);
+                proto.Receive(buffer);
             };
 
             Task.Run(async () =>
@@ -86,17 +87,20 @@ namespace CSharpServer.Net
                 }
             });
 
+            ep = new IPEndPoint(IPAddress.Any, 0);
+            data = new byte[1024];
+
             Thread threadReceive = new Thread(Receive);
             threadReceive.IsBackground = true;
             threadReceive.Start();
         }
 
-        private void Receive()
+        private static void Receive()
         {
             try
             {
-                byte[] data = new byte[1024];
-                int buflen = socket.ReceiveFrom(data, ref ep);
+                buflen = socket.ReceiveFrom(data, ref ep);
+
                 Console.WriteLine("收到UDP消息长度{0} IP{1} port{2}", buflen, (ep as IPEndPoint).Address, (ep as IPEndPoint).Port);
                 Console.WriteLine("mKcp Input");
 
@@ -111,7 +115,7 @@ namespace CSharpServer.Net
             }
         }
 
-        public void Send(byte[] buffer)
+        public static void Send(byte[] buffer)
         {
             mKcp.Send(buffer);
         }
